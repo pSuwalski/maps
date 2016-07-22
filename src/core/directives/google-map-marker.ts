@@ -38,7 +38,7 @@ let markerId = 0;
   selector: 'sebm-google-map-marker',
   inputs: [
     'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'iconUrl',
-    'openInfoWindow', 'fitBounds'
+    'openInfoWindow', 'fitBounds', 'icon'
   ],
   outputs: ['markerClick', 'dragEnd']
 })
@@ -77,6 +77,8 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
    * Whether to automatically open the child info window when the marker is clicked.
    */
   openInfoWindow: boolean = true;
+  
+  icon: mapTypes.GoogleIcon;
 
   /**
    * This event emitter gets emitted when the user clicks on the marker.
@@ -129,6 +131,11 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
     if (changes['iconUrl']) {
       this._markerManager.updateIcon(this);
     }
+    
+    if (changes['icon']) {
+      this._markerManager.updateRichIcon(this);
+    }
+    
   }
 
   private _addEventListeners() {

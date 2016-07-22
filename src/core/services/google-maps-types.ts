@@ -30,13 +30,17 @@ export interface Marker extends MVCObject {
   getLabel(): MarkerLabel;
 }
 
+export type GooglePoint = { x: number, y: number }
+export type GoogleSize = { height: number, width: number }
+export type GoogleIcon = string | {url: string, anchor?: GooglePoint, size?: GoogleSize}
+
 export interface MarkerOptions {
   position: LatLng|LatLngLiteral;
   title?: string;
   map?: GoogleMap;
   label?: string|MarkerLabel;
   draggable?: boolean;
-  icon?: string;
+  icon?: GoogleIcon;
 }
 
 export interface MarkerLabel {
