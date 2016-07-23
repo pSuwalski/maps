@@ -13,7 +13,7 @@
     "maps"
   ],
   "scripts": {
-    "postinstall": "typings install; ln -s src/core core",
+    "postinstall": "typings install; gulp build; rm core; ln -s dist/core core",
     "ci": "gulp build && gulp test"
   },
   "author": "Sebastian Müller <info@sebastian-mueller.net>",

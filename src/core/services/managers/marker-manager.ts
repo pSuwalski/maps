@@ -10,9 +10,9 @@ import {Marker} from './../google-maps-types';
 @Injectable()
 export class MarkerManager {
   private _markers: Map<SebmGoogleMapMarker, Promise<Marker>> =
-      new Map<SebmGoogleMapMarker, Promise<Marker>>();
+  new Map<SebmGoogleMapMarker, Promise<Marker>>();
 
-  constructor(private _mapsWrapper: GoogleMapsAPIWrapper, private _zone: NgZone) {}
+  constructor(private _mapsWrapper: GoogleMapsAPIWrapper, private _zone: NgZone) { }
 
   deleteMarker(marker: SebmGoogleMapMarker): Promise<void> {
     const m = this._markers.get(marker);
@@ -30,7 +30,7 @@ export class MarkerManager {
 
   updateMarkerPosition(marker: SebmGoogleMapMarker): Promise<void> {
     return this._markers.get(marker).then(
-        (m: Marker) => m.setPosition({lat: marker.latitude, lng: marker.longitude}));
+      (m: Marker) => m.setPosition({ lat: marker.latitude, lng: marker.longitude }));
   }
 
   updateTitle(marker: SebmGoogleMapMarker): Promise<void> {
@@ -46,20 +46,16 @@ export class MarkerManager {
   }
 
   updateIcon(marker: SebmGoogleMapMarker): Promise<void> {
-    return this._markers.get(marker).then((m: Marker) => {
-      m.setIcon(marker.iconUrl)
-    });
+    return this._markers.get(marker).then((m: Marker) => { m.setIcon(marker.iconUrl) });
   }
-  
+
   updateRichIcon(marker: SebmGoogleMapMarker): Promise<void> {
-    return this._markers.get(marker).then((m: Marker) => {
-      m.setIcon(marker.icon)
-    });
+    return this._markers.get(marker).then((m: Marker) => { m.setRichIcon(marker.icon) });
   }
 
   addMarker(marker: SebmGoogleMapMarker) {
     const markerPromise = this._mapsWrapper.createMarker({
-      position: {lat: marker.latitude, lng: marker.longitude},
+      position: { lat: marker.latitude, lng: marker.longitude },
       label: marker.label,
       draggable: marker.draggable,
       icon: marker.icon || marker.iconUrl

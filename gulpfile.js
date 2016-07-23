@@ -7,7 +7,7 @@ const runSequence = require('run-sequence');
 gulp.task('build', (done) => {
   runSequence(
     ['clean:dist', 'clean:tmp'],
-    'lint',
+    // 'lint',
     ['copyReleaseAssets', 'scripts', 'bundle'],
     'createPackageJson',
     done

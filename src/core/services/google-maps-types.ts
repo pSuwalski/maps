@@ -27,12 +27,23 @@ export interface Marker extends MVCObject {
   setLabel(label: string|MarkerLabel): void;
   setDraggable(draggable: boolean): void;
   setIcon(icon: string): void;
+  setRichIcon(icon: GoogleIcon): void;
   getLabel(): MarkerLabel;
 }
 
-export type GooglePoint = { x: number, y: number }
-export type GoogleSize = { height: number, width: number }
-export type GoogleIcon = string | {url: string, anchor?: GooglePoint, size?: GoogleSize}
+export type GooglePoint = {
+  x: number,
+  y: number
+}
+
+export type GoogleSize = {
+  height: number,
+  width: number
+}
+
+export type GoogleIcon = string | {
+  url: string, anchor?: GooglePoint, size?: GoogleSize
+}
 
 export interface MarkerOptions {
   position: LatLng|LatLngLiteral;

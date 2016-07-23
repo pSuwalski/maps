@@ -77,7 +77,7 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
    * Whether to automatically open the child info window when the marker is clicked.
    */
   openInfoWindow: boolean = true;
-  
+
   icon: mapTypes.GoogleIcon;
 
   /**
@@ -106,7 +106,7 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
   }
 
   /** @internal */
-  ngOnChanges(changes: {[key: string]: SimpleChange}) {
+  ngOnChanges(changes: { [key: string]: SimpleChange }) {
     if (typeof this.latitude !== 'number' || typeof this.longitude !== 'number') {
       return;
     }
@@ -131,11 +131,11 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
     if (changes['iconUrl']) {
       this._markerManager.updateIcon(this);
     }
-    
+
     if (changes['icon']) {
       this._markerManager.updateRichIcon(this);
     }
-    
+
   }
 
   private _addEventListeners() {
@@ -148,9 +148,9 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
     this._observableSubscriptions.push(cs);
 
     const ds = this._markerManager.createEventObservable<mapTypes.MouseEvent>('dragend', this)
-                   .subscribe((e: mapTypes.MouseEvent) => {
-                     this.dragEnd.emit({coords: {lat: e.latLng.lat(), lng: e.latLng.lng()}});
-                   });
+      .subscribe((e: mapTypes.MouseEvent) => {
+        this.dragEnd.emit({ coords: { lat: e.latLng.lat(), lng: e.latLng.lng() } });
+      });
     this._observableSubscriptions.push(ds);
   }
 
