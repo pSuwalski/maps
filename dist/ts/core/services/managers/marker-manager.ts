@@ -60,7 +60,7 @@ export class MarkerManager {
       position: { lat: marker.latitude, lng: marker.longitude },
       label: marker.label,
       draggable: marker.draggable,
-      icon: {url: marker.getIcon()}
+      icon: marker.getIcon()
     });
     this._markers.set(marker, markerPromise);
   }

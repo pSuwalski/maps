@@ -117,7 +117,10 @@ var SebmGoogleMapMarker = (function () {
         if (changes['iconAnchorY']) {
             this._markerManager.updateIcon(this);
         }
-        if (changes['iconSize']) {
+        if (changes['iconScaledSizeX']) {
+            this._markerManager.updateIcon(this);
+        }
+        if (changes['iconScaledSizeY']) {
             this._markerManager.updateIcon(this);
         }
     };

@@ -459,7 +459,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 position: { lat: marker.latitude, lng: marker.longitude },
                 label: marker.label,
                 draggable: marker.draggable,
-                icon: { url: marker.getIcon() }
+                icon: marker.getIcon()
             });
             this._markers.set(marker, markerPromise);
         };
@@ -1313,7 +1313,10 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (changes['iconAnchorY']) {
                 this._markerManager.updateIcon(this);
             }
-            if (changes['iconSize']) {
+            if (changes['iconScaledSizeX']) {
+                this._markerManager.updateIcon(this);
+            }
+            if (changes['iconScaledSizeY']) {
                 this._markerManager.updateIcon(this);
             }
         };
