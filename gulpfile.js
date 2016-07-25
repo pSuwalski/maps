@@ -9,7 +9,7 @@ gulp.task('build', (done) => {
     ['clean:dist', 'clean:tmp'],
     // 'lint',
     ['copyReleaseAssets', 'scripts', 'bundle'],
-    'createPackageJson',
+    // 'createPackageJson',
     done
   );
 });
