@@ -6,7 +6,6 @@
  */
 import { AfterContentInit, EventEmitter, OnChanges, OnDestroy, SimpleChange } from '@angular/core';
 import { MouseEvent } from '../map-types';
-import * as mapTypes from '../services/google-maps-types';
 import { MarkerManager } from '../services/managers/marker-manager';
 /**
  * SebmGoogleMapMarker renders a map marker inside a {@link SebmGoogleMap}.
@@ -63,7 +62,11 @@ export declare class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterC
      * Whether to automatically open the child info window when the marker is clicked.
      */
     openInfoWindow: boolean;
-    icon: mapTypes.GoogleIcon;
+    iconAnchorX: number;
+    iconAnchorY: number;
+    iconScaledSizeWidth: number;
+    iconScaledSizeHeight: number;
+    getIcon(): any;
     /**
      * This event emitter gets emitted when the user clicks on the marker.
      */

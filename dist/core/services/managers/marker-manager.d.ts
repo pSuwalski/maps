@@ -20,7 +20,6 @@ export declare class MarkerManager {
     updateLabel(marker: SebmGoogleMapMarker): Promise<void>;
     updateDraggable(marker: SebmGoogleMapMarker): Promise<void>;
     updateIcon(marker: SebmGoogleMapMarker): Promise<void>;
-    updateRichIcon(marker: SebmGoogleMapMarker): Promise<void>;
     addMarker(marker: SebmGoogleMapMarker): void;
     getNativeMarker(marker: SebmGoogleMapMarker): Promise<Marker>;
     createEventObservable<T>(eventName: string, marker: SebmGoogleMapMarker): Observable<T>;

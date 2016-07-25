@@ -52,11 +52,7 @@ export class MarkerManager {
   }
 
   updateIcon(marker: SebmGoogleMapMarker): Promise<void> {
-    return this._markers.get(marker).then((m: Marker) => { m.setIcon(marker.iconUrl) });
-  }
-
-  updateRichIcon(marker: SebmGoogleMapMarker): Promise<void> {
-    return this._markers.get(marker).then((m: Marker) => { m.setRichIcon(marker.icon) });
+    return this._markers.get(marker).then((m: Marker) => { m.setIcon(marker.getIcon()) });
   }
 
   addMarker(marker: SebmGoogleMapMarker) {
@@ -64,7 +60,7 @@ export class MarkerManager {
       position: { lat: marker.latitude, lng: marker.longitude },
       label: marker.label,
       draggable: marker.draggable,
-      icon: marker.icon || marker.iconUrl
+      icon: {url: marker.getIcon()}
     });
     this._markers.set(marker, markerPromise);
   }

@@ -48,17 +48,14 @@ export let MarkerManager = class MarkerManager {
         return this._markers.get(marker).then((m) => m.setDraggable(marker.draggable));
     }
     updateIcon(marker) {
-        return this._markers.get(marker).then((m) => { m.setIcon(marker.iconUrl); });
-    }
-    updateRichIcon(marker) {
-        return this._markers.get(marker).then((m) => { m.setRichIcon(marker.icon); });
+        return this._markers.get(marker).then((m) => { m.setIcon(marker.getIcon()); });
     }
     addMarker(marker) {
         const markerPromise = this._mapsWrapper.createMarker({
             position: { lat: marker.latitude, lng: marker.longitude },
             label: marker.label,
             draggable: marker.draggable,
-            icon: marker.icon || marker.iconUrl
+            icon: { url: marker.getIcon() }
         });
         this._markers.set(marker, markerPromise);
     }

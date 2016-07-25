@@ -38,7 +38,7 @@ let markerId = 0;
   selector: 'sebm-google-map-marker',
   inputs: [
     'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'iconUrl',
-    'openInfoWindow', 'fitBounds', 'icon'
+    'openInfoWindow', 'fitBounds', 'iconAnchorX', 'iconAnchorY', 'iconScaledSizeX', 'iconScaledSizeY'
   ],
   outputs: ['markerClick', 'dragEnd']
 })
@@ -77,8 +77,25 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
    * Whether to automatically open the child info window when the marker is clicked.
    */
   openInfoWindow: boolean = true;
+  
+  iconAnchorX: number;
+  iconAnchorY: number;
+  iconScaledSizeWidth: number;
+  iconScaledSizeHeight: number;
 
-  icon: mapTypes.GoogleIcon;
+  public getIcon() {
+    let icon: any = {};
+    if (this.iconUrl) {
+      icon.url = this.iconUrl;
+    }
+    if (this.iconAnchorX && this.iconAnchorY) {
+      icon.anchor = {x: this.iconAnchorX, y: this.iconAnchorY}
+    }
+    if (this.iconScaledSizeWidth && this.iconScaledSizeHeight) {
+      icon.scaledSize = {width: this.iconScaledSizeWidth, height: this.iconScaledSizeHeight}
+    }
+    return icon;
+  }
 
   /**
    * This event emitter gets emitted when the user clicks on the marker.
@@ -131,11 +148,15 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
     if (changes['iconUrl']) {
       this._markerManager.updateIcon(this);
     }
-
-    if (changes['icon']) {
-      this._markerManager.updateRichIcon(this);
+    if (changes['iconAnchorX']) {
+      this._markerManager.updateIcon(this);
     }
-
+    if (changes['iconAnchorY']) {
+      this._markerManager.updateIcon(this);
+    }
+    if (changes['iconSize']) {
+      this._markerManager.updateIcon(this);
+    }
   }
 
   private _addEventListeners() {

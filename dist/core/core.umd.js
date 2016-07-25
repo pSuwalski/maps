@@ -452,17 +452,14 @@ var __extends = (this && this.__extends) || function (d, b) {
             return this._markers.get(marker).then(function (m) { return m.setDraggable(marker.draggable); });
         };
         MarkerManager.prototype.updateIcon = function (marker) {
-            return this._markers.get(marker).then(function (m) { m.setIcon(marker.iconUrl); });
-        };
-        MarkerManager.prototype.updateRichIcon = function (marker) {
-            return this._markers.get(marker).then(function (m) { m.setRichIcon(marker.icon); });
+            return this._markers.get(marker).then(function (m) { m.setIcon(marker.getIcon()); });
         };
         MarkerManager.prototype.addMarker = function (marker) {
             var markerPromise = this._mapsWrapper.createMarker({
                 position: { lat: marker.latitude, lng: marker.longitude },
                 label: marker.label,
                 draggable: marker.draggable,
-                icon: marker.icon || marker.iconUrl
+                icon: { url: marker.getIcon() }
             });
             this._markers.set(marker, markerPromise);
         };
@@ -1265,6 +1262,19 @@ var __extends = (this && this.__extends) || function (d, b) {
             this._observableSubscriptions = [];
             this._id = (markerId++).toString();
         }
+        SebmGoogleMapMarker.prototype.getIcon = function () {
+            var icon = {};
+            if (this.iconUrl) {
+                icon.url = this.iconUrl;
+            }
+            if (this.iconAnchorX && this.iconAnchorY) {
+                icon.anchor = { x: this.iconAnchorX, y: this.iconAnchorY };
+            }
+            if (this.iconScaledSizeWidth && this.iconScaledSizeHeight) {
+                icon.scaledSize = { width: this.iconScaledSizeWidth, height: this.iconScaledSizeHeight };
+            }
+            return icon;
+        };
         /* @internal */
         SebmGoogleMapMarker.prototype.ngAfterContentInit = function () {
             if (this._infoWindow != null) {
@@ -1297,8 +1307,14 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (changes['iconUrl']) {
                 this._markerManager.updateIcon(this);
             }
-            if (changes['icon']) {
-                this._markerManager.updateRichIcon(this);
+            if (changes['iconAnchorX']) {
+                this._markerManager.updateIcon(this);
+            }
+            if (changes['iconAnchorY']) {
+                this._markerManager.updateIcon(this);
+            }
+            if (changes['iconSize']) {
+                this._markerManager.updateIcon(this);
             }
         };
         SebmGoogleMapMarker.prototype._addEventListeners = function () {
@@ -1337,7 +1353,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             selector: 'sebm-google-map-marker',
             inputs: [
                 'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'iconUrl',
-                'openInfoWindow', 'fitBounds', 'icon'
+                'openInfoWindow', 'fitBounds', 'iconAnchorX', 'iconAnchorY', 'iconScaledSizeX', 'iconScaledSizeY'
             ],
             outputs: ['markerClick', 'dragEnd']
         }),

@@ -50,17 +50,14 @@ var MarkerManager = (function () {
         return this._markers.get(marker).then(function (m) { return m.setDraggable(marker.draggable); });
     };
     MarkerManager.prototype.updateIcon = function (marker) {
-        return this._markers.get(marker).then(function (m) { m.setIcon(marker.iconUrl); });
-    };
-    MarkerManager.prototype.updateRichIcon = function (marker) {
-        return this._markers.get(marker).then(function (m) { m.setRichIcon(marker.icon); });
+        return this._markers.get(marker).then(function (m) { m.setIcon(marker.getIcon()); });
     };
     MarkerManager.prototype.addMarker = function (marker) {
         var markerPromise = this._mapsWrapper.createMarker({
             position: { lat: marker.latitude, lng: marker.longitude },
             label: marker.label,
             draggable: marker.draggable,
-            icon: marker.icon || marker.iconUrl
+            icon: { url: marker.getIcon() }
         });
         this._markers.set(marker, markerPromise);
     };
