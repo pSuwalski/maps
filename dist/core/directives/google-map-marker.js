@@ -77,6 +77,7 @@ var SebmGoogleMapMarker = (function () {
         if (this.iconScaledSizeWidth && this.iconScaledSizeHeight) {
             icon.scaledSize = { width: this.iconScaledSizeWidth, height: this.iconScaledSizeHeight };
         }
+        console.log("getIcon", icon);
         return icon;
     };
     /* @internal */
