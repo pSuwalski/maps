@@ -158,7 +158,7 @@ SebmGoogleMapMarker = __decorate([
         selector: 'sebm-google-map-marker',
         inputs: [
             'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'iconUrl',
-            'openInfoWindow', 'fitBounds', 'iconAnchorX', 'iconAnchorY', 'iconScaledSizeX', 'iconScaledSizeY'
+            'openInfoWindow', 'fitBounds', 'iconAnchorX', 'iconAnchorY', 'iconScaledSizeWidth', 'iconScaledSizeHeight'
         ],
         outputs: ['markerClick', 'dragEnd']
     }), 
