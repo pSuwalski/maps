@@ -1,6 +1,6 @@
 /**
  * angular2-google-maps - Angular 2 components for Google Maps
- * @version v0.12.0
+ * @version v0.14.0
  * @link https://github.com/SebastianM/angular2-google-maps#readme
  * @license MIT
  */
@@ -16,7 +16,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Inject, Injectable, Optional, provide } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { DOCUMENT_GLOBAL, WINDOW_GLOBAL } from '../../utils/browser-globals';
 import { MapsAPILoader } from './maps-api-loader';
 export var GoogleMapsScriptProtocol;
@@ -123,7 +123,8 @@ LazyMapsAPILoader = __decorate([
  * Creates a provider for a {@link LazyMapsAPILoaderConfig})
  */
 export function provideLazyMapsAPILoaderConfig(confLiteral) {
-    return provide(LazyMapsAPILoaderConfig, {
+    return {
+        provide: LazyMapsAPILoaderConfig,
         useFactory: () => {
             const config = new LazyMapsAPILoaderConfig();
             // todo(sebastian): deprecate LazyMapsAPILoader class
@@ -138,7 +139,7 @@ export function provideLazyMapsAPILoaderConfig(confLiteral) {
             config.region = config.region || DEFAULT_CONFIGURATION.region;
             return config;
         }
-    });
+    };
 }
 
 //# sourceMappingURL=lazy-maps-api-loader.js.map

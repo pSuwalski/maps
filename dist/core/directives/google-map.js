@@ -1,6 +1,6 @@
 /**
  * angular2-google-maps - Angular 2 components for Google Maps
- * @version v0.12.0
+ * @version v0.14.0
  * @link https://github.com/SebastianM/angular2-google-maps#readme
  * @license MIT
  */
@@ -19,6 +19,7 @@ var google_maps_api_wrapper_1 = require('../services/google-maps-api-wrapper');
 var circle_manager_1 = require('../services/managers/circle-manager');
 var info_window_manager_1 = require('../services/managers/info-window-manager');
 var marker_manager_1 = require('../services/managers/marker-manager');
+var polyline_manager_1 = require('../services/managers/polyline-manager');
 /**
  * SebMGoogleMap renders a Google Map.
  * **Important note**: To be able see a map in the browser, you have to define a height for the CSS
@@ -60,6 +61,10 @@ var SebmGoogleMap = (function () {
          * The zoom level of the map. The default zoom level is 8.
          */
         this.zoom = 8;
+        /**
+         * Enables/disables if map is draggable.
+         */
+        this.draggable = true;
         /**
          * Enables/disables zoom and center on double click. Enabled by default.
          */
@@ -135,6 +140,10 @@ var SebmGoogleMap = (function () {
          * This event is fired when the map becomes idle after panning or zooming.
          */
         this.idle = new core_1.EventEmitter();
+        /**
+         * This event is fired when the zoom level has changed.
+         */
+        this.zoomChange = new core_1.EventEmitter();
     }
     /** @internal */
     SebmGoogleMap.prototype.ngOnInit = function () {
@@ -148,6 +157,7 @@ var SebmGoogleMap = (function () {
             zoom: this.zoom,
             disableDefaultUI: this.disableDefaultUI,
             backgroundColor: this.backgroundColor,
+            draggable: this.draggable,
             draggableCursor: this.draggableCursor,
             draggingCursor: this.draggingCursor,
             keyboardShortcuts: this.keyboardShortcuts,
@@ -245,7 +255,10 @@ var SebmGoogleMap = (function () {
     SebmGoogleMap.prototype._handleMapZoomChange = function () {
         var _this = this;
         var s = this._mapsWrapper.subscribeToMapEvent('zoom_changed').subscribe(function () {
-            _this._mapsWrapper.getZoom().then(function (z) { return _this.zoom = z; });
+            _this._mapsWrapper.getZoom().then(function (z) {
+                _this.zoom = z;
+                _this.zoomChange.emit(z);
+            });
         });
         this._observableSubscriptions.push(s);
     };
@@ -272,19 +285,22 @@ var SebmGoogleMap = (function () {
      * Map option attributes that can change over time
      */
     SebmGoogleMap._mapOptionsAttributes = [
-        'disableDoubleClickZoom', 'scrollwheel', 'draggableCursor', 'draggingCursor',
+        'disableDoubleClickZoom', 'scrollwheel', 'draggable', 'draggableCursor', 'draggingCursor',
         'keyboardShortcuts', 'zoomControl', 'styles', 'streetViewControl', 'zoom'
     ];
     SebmGoogleMap = __decorate([
         core_1.Component({
             selector: 'sebm-google-map',
-            providers: [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, marker_manager_1.MarkerManager, info_window_manager_1.InfoWindowManager, circle_manager_1.CircleManager],
+            providers: [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, marker_manager_1.MarkerManager, info_window_manager_1.InfoWindowManager, circle_manager_1.CircleManager, polyline_manager_1.PolylineManager],
             inputs: [
-                'longitude', 'latitude', 'zoom', 'disableDoubleClickZoom', 'disableDefaultUI', 'scrollwheel',
-                'backgroundColor', 'draggableCursor', 'draggingCursor', 'keyboardShortcuts', 'zoomControl',
-                'styles', 'usePanning', 'streetViewControl', 'fitBounds', 'scaleControl'
+                'longitude', 'latitude', 'zoom', 'draggable: mapDraggable', 'disableDoubleClickZoom',
+                'disableDefaultUI', 'scrollwheel', 'backgroundColor', 'draggableCursor', 'draggingCursor',
+                'keyboardShortcuts', 'zoomControl', 'styles', 'usePanning', 'streetViewControl', 'fitBounds',
+                'scaleControl'
             ],
-            outputs: ['mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange'],
+            outputs: [
+                'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange'
+            ],
             host: { '[class.sebm-google-map-container]': 'true' },
             styles: ["\n    .sebm-google-map-container-inner {\n      width: inherit;\n      height: inherit;\n    }\n    .sebm-google-map-content {\n      display:none;\n    }\n  "],
             template: "\n    <div class='sebm-google-map-container-inner'></div>\n    <div class='sebm-google-map-content'>\n      <ng-content></ng-content>\n    </div>\n  "

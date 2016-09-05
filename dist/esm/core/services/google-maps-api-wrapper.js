@@ -1,6 +1,6 @@
 /**
  * angular2-google-maps - Angular 2 components for Google Maps
- * @version v0.12.0
+ * @version v0.14.0
  * @link https://github.com/SebastianM/angular2-google-maps#readme
  * @license MIT
  */
@@ -56,6 +56,13 @@ export let GoogleMapsAPIWrapper = class GoogleMapsAPIWrapper {
         return this._map.then((map) => {
             options.map = map;
             return new google.maps.Circle(options);
+        });
+    }
+    createPolyline(options) {
+        return this.getNativeMap().then((map) => {
+            let line = new google.maps.Polyline(options);
+            line.setMap(map);
+            return line;
         });
     }
     subscribeToMapEvent(eventName) {

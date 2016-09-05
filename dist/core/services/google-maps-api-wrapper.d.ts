@@ -1,12 +1,14 @@
 /**
  * angular2-google-maps - Angular 2 components for Google Maps
- * @version v0.12.0
+ * @version v0.14.0
  * @link https://github.com/SebastianM/angular2-google-maps#readme
  * @license MIT
  */
 import { NgZone } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as mapTypes from './google-maps-types';
+import { Polyline } from './google-maps-types';
+import { PolylineOptions } from './google-maps-types';
 import { MapsAPILoader } from './maps-api-loader/maps-api-loader';
 /**
  * Wrapper class that handles the communication with the Google Maps Javascript
@@ -29,6 +31,7 @@ export declare class GoogleMapsAPIWrapper {
      * Creates a google.map.Circle for the current map.
      */
     createCircle(options: mapTypes.CircleOptions): Promise<mapTypes.Circle>;
+    createPolyline(options: PolylineOptions): Promise<Polyline>;
     subscribeToMapEvent<E>(eventName: string): Observable<E>;
     setCenter(latLng: mapTypes.LatLngLiteral): Promise<void>;
     getZoom(): Promise<number>;

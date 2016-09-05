@@ -1,6 +1,6 @@
 /**
  * angular2-google-maps - Angular 2 components for Google Maps
- * @version v0.12.0
+ * @version v0.14.0
  * @link https://github.com/SebastianM/angular2-google-maps#readme
  * @license MIT
  */
@@ -59,6 +59,10 @@ export declare class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterC
      */
     iconUrl: string;
     /**
+     * If true, the marker is visible
+     */
+    visible: boolean;
+    /**
      * Whether to automatically open the child info window when the marker is clicked.
      */
     openInfoWindow: boolean;
@@ -67,6 +71,17 @@ export declare class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterC
     iconScaledSizeWidth: number;
     iconScaledSizeHeight: number;
     getIcon(): any;
+    /**
+     * The marker's opacity between 0.0 and 1.0.
+     */
+    opacity: number;
+    /**
+     * All markers are displayed on the map in order of their zIndex, with higher values displaying in
+     * front of markers with lower values. By default, markers are displayed according to their
+     * vertical position on screen, with lower markers appearing in front of markers further up the
+     * screen.
+     */
+    zIndex: number;
     /**
      * This event emitter gets emitted when the user clicks on the marker.
      */

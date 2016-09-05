@@ -1,6 +1,6 @@
 /**
  * angular2-google-maps - Angular 2 components for Google Maps
- * @version v0.12.0
+ * @version v0.14.0
  * @link https://github.com/SebastianM/angular2-google-maps#readme
  * @license MIT
  */
@@ -49,6 +49,10 @@ export declare class SebmGoogleMap implements OnChanges, OnInit {
      * The zoom level of the map. The default zoom level is 8.
      */
     zoom: number;
+    /**
+     * Enables/disables if map is draggable.
+     */
+    draggable: boolean;
     /**
      * Enables/disables zoom and center on double click. Enabled by default.
      */
@@ -147,6 +151,10 @@ export declare class SebmGoogleMap implements OnChanges, OnInit {
      * This event is fired when the map becomes idle after panning or zooming.
      */
     idle: EventEmitter<void>;
+    /**
+     * This event is fired when the zoom level has changed.
+     */
+    zoomChange: EventEmitter<number>;
     constructor(_elem: ElementRef, _mapsWrapper: GoogleMapsAPIWrapper);
     /** @internal */
     ngOnInit(): void;

@@ -1,6 +1,6 @@
 /**
  * angular2-google-maps - Angular 2 components for Google Maps
- * @version v0.12.0
+ * @version v0.14.0
  * @link https://github.com/SebastianM/angular2-google-maps#readme
  * @license MIT
  */
@@ -51,9 +51,24 @@ var SebmGoogleMapMarker = (function () {
          */
         this.draggable = false;
         /**
+         * If true, the marker is visible
+         */
+        this.visible = true;
+        /**
          * Whether to automatically open the child info window when the marker is clicked.
          */
         this.openInfoWindow = true;
+        /**
+         * The marker's opacity between 0.0 and 1.0.
+         */
+        this.opacity = 1;
+        /**
+         * All markers are displayed on the map in order of their zIndex, with higher values displaying in
+         * front of markers with lower values. By default, markers are displayed according to their
+         * vertical position on screen, with lower markers appearing in front of markers further up the
+         * screen.
+         */
+        this.zIndex = 1;
         /**
          * This event emitter gets emitted when the user clicks on the marker.
          */
@@ -123,6 +138,15 @@ var SebmGoogleMapMarker = (function () {
         if (changes['iconScaledSizeY']) {
             this._markerManager.updateIcon(this);
         }
+        if (changes['opacity']) {
+            this._markerManager.updateOpacity(this);
+        }
+        if (changes['visible']) {
+            this._markerManager.updateVisible(this);
+        }
+        if (changes['zIndex']) {
+            this._markerManager.updateZIndex(this);
+        }
     };
     SebmGoogleMapMarker.prototype._addEventListeners = function () {
         var _this = this;
@@ -158,7 +182,7 @@ var SebmGoogleMapMarker = (function () {
             selector: 'sebm-google-map-marker',
             inputs: [
                 'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'iconUrl',
-                'openInfoWindow', 'fitBounds', 'iconAnchorX', 'iconAnchorY', 'iconScaledSizeWidth', 'iconScaledSizeHeight'
+                'openInfoWindow', 'fitBounds', 'iconAnchorX', 'iconAnchorY', 'iconScaledSizeWidth', 'iconScaledSizeHeight', 'opacity', 'visible', 'zIndex'
             ],
             outputs: ['markerClick', 'dragEnd']
         }), 

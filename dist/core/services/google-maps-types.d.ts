@@ -1,6 +1,6 @@
 /**
  * angular2-google-maps - Angular 2 components for Google Maps
- * @version v0.12.0
+ * @version v0.14.0
  * @link https://github.com/SebastianM/angular2-google-maps#readme
  * @license MIT
  */
@@ -31,6 +31,9 @@ export interface Marker extends MVCObject {
     setDraggable(draggable: boolean): void;
     setIcon(icon: GoogleIcon): void;
     setRichIcon(icon: GoogleIcon): void;
+    setOpacity(opacity: number): void;
+    setVisible(visible: boolean): void;
+    setZIndex(zIndex: number): void;
     getLabel(): MarkerLabel;
 }
 export declare type GooglePoint = {
@@ -53,6 +56,9 @@ export interface MarkerOptions {
     label?: string | MarkerLabel;
     draggable?: boolean;
     icon?: GoogleIcon;
+    opacity?: number;
+    visible?: boolean;
+    zIndex?: number;
 }
 export interface MarkerLabel {
     color: string;
@@ -127,6 +133,7 @@ export interface MapOptions {
     disableDoubleClickZoom?: boolean;
     disableDefaultUI?: boolean;
     backgroundColor?: string;
+    draggable?: boolean;
     draggableCursor?: string;
     draggingCursor?: string;
     keyboardShortcuts?: boolean;
@@ -185,4 +192,63 @@ export interface InfoWindowOptions {
     pixelOffset?: Size;
     position?: LatLng | LatLngLiteral;
     zIndex?: number;
+}
+export interface Point {
+    x: number;
+    y: number;
+    equals(other: Point): boolean;
+    toString(): string;
+}
+export interface GoogleSymbol {
+    anchor?: Point;
+    fillColor?: string;
+    fillOpacity?: string;
+    labelOrigin?: Point;
+    path?: string;
+    rotation?: number;
+    scale?: number;
+    strokeColor?: string;
+    strokeOpacity?: number;
+    strokeWeight?: number;
+}
+export interface IconSequence {
+    fixedRotation?: boolean;
+    icon?: GoogleSymbol;
+    offset?: string;
+    repeat?: string;
+}
+export interface PolylineOptions {
+    clickable?: boolean;
+    draggable?: boolean;
+    editable?: boolean;
+    geodesic?: boolean;
+    icon?: Array<IconSequence>;
+    map?: GoogleMap;
+    path?: Array<LatLng> | Array<LatLng | LatLngLiteral>;
+    strokeColor?: string;
+    strokeOpacity?: number;
+    strokeWeight?: number;
+    visible?: boolean;
+    zIndex?: number;
+}
+export interface Polyline extends MVCObject {
+    getDraggable(): boolean;
+    getEditable(): boolean;
+    getMap(): GoogleMap;
+    getPath(): Array<LatLng>;
+    getVisible(): boolean;
+    setDraggable(draggable: boolean): void;
+    setEditable(editable: boolean): void;
+    setMap(map: GoogleMap): void;
+    setOptions(options: PolylineOptions): void;
+    setPath(path: Array<LatLng | LatLngLiteral>): void;
+    setVisible(visible: boolean): void;
+}
+/**
+ * PolyMouseEvent gets emitted when the user triggers mouse events on a polyline.
+ */
+export interface PolyMouseEvent extends MouseEvent {
+    edge: number;
+    path: number;
+    vertex: number;
 }
