@@ -670,10 +670,13 @@ var __extends = (this && this.__extends) || function (d, b) {
         }
         /** @internal */
         SebmGoogleMap.prototype.ngOnInit = function () {
+            var _this = this;
             // todo: this should be solved with a new component and a viewChild decorator
             var container = this._elem.nativeElement.querySelector('.sebm-google-map-container-inner');
             this._initMapInstance(container);
-            this.loaded.emit(this._mapsWrapper.getNativeMap());
+            this._mapsWrapper.getNativeMap().then(function (nativeMap) {
+                _this.loaded.emit(nativeMap);
+            });
         };
         SebmGoogleMap.prototype._initMapInstance = function (el) {
             this._mapsWrapper.createMap(el, {

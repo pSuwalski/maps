@@ -151,7 +151,9 @@ export let SebmGoogleMap = SebmGoogleMap_1 = class SebmGoogleMap {
         // todo: this should be solved with a new component and a viewChild decorator
         const container = this._elem.nativeElement.querySelector('.sebm-google-map-container-inner');
         this._initMapInstance(container);
-        this.loaded.emit(this._mapsWrapper.getNativeMap());
+        this._mapsWrapper.getNativeMap().then((nativeMap) => {
+            this.loaded.emit(nativeMap);
+        });
     }
     _initMapInstance(el) {
         this._mapsWrapper.createMap(el, {

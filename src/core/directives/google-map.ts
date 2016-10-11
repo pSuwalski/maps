@@ -222,7 +222,9 @@ export class SebmGoogleMap implements OnChanges, OnInit {
     // todo: this should be solved with a new component and a viewChild decorator
     const container = this._elem.nativeElement.querySelector('.sebm-google-map-container-inner');
     this._initMapInstance(container);
-    this.loaded.emit(this._mapsWrapper.getNativeMap());
+    this._mapsWrapper.getNativeMap().then((nativeMap) => {
+      this.loaded.emit(nativeMap);
+    });
   }
 
   private _initMapInstance(el: HTMLElement) {
