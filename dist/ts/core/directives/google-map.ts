@@ -46,7 +46,7 @@ import {PolylineManager} from '../services/managers/polyline-manager';
   providers:
       [GoogleMapsAPIWrapper, MarkerManager, InfoWindowManager, CircleManager, PolylineManager],
   inputs: [
-    'longitude', 'latitude', 'zoom', 'draggable: mapDraggable', 'disableDoubleClickZoom',
+    'longitude', 'latitude', 'zoom', 'draggable', 'disableDoubleClickZoom',
     'disableDefaultUI', 'scrollwheel', 'backgroundColor', 'draggableCursor', 'draggingCursor',
     'keyboardShortcuts', 'zoomControl', 'styles', 'usePanning', 'streetViewControl', 'fitBounds',
     'scaleControl'

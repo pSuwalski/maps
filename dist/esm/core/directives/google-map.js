@@ -292,7 +292,7 @@ SebmGoogleMap = SebmGoogleMap_1 = __decorate([
         selector: 'sebm-google-map',
         providers: [GoogleMapsAPIWrapper, MarkerManager, InfoWindowManager, CircleManager, PolylineManager],
         inputs: [
-            'longitude', 'latitude', 'zoom', 'draggable: mapDraggable', 'disableDoubleClickZoom',
+            'longitude', 'latitude', 'zoom', 'draggable', 'disableDoubleClickZoom',
             'disableDefaultUI', 'scrollwheel', 'backgroundColor', 'draggableCursor', 'draggingCursor',
             'keyboardShortcuts', 'zoomControl', 'styles', 'usePanning', 'streetViewControl', 'fitBounds',
             'scaleControl'

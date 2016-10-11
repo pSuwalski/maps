@@ -822,7 +822,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             selector: 'sebm-google-map',
             providers: [exports.GoogleMapsAPIWrapper, exports.MarkerManager, exports.InfoWindowManager, exports.CircleManager, exports.PolylineManager],
             inputs: [
-                'longitude', 'latitude', 'zoom', 'draggable: mapDraggable', 'disableDoubleClickZoom',
+                'longitude', 'latitude', 'zoom', 'draggable', 'disableDoubleClickZoom',
                 'disableDefaultUI', 'scrollwheel', 'backgroundColor', 'draggableCursor', 'draggingCursor',
                 'keyboardShortcuts', 'zoomControl', 'styles', 'usePanning', 'streetViewControl', 'fitBounds',
                 'scaleControl'

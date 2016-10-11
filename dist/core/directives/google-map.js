@@ -298,7 +298,7 @@ var SebmGoogleMap = (function () {
             selector: 'sebm-google-map',
             providers: [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, marker_manager_1.MarkerManager, info_window_manager_1.InfoWindowManager, circle_manager_1.CircleManager, polyline_manager_1.PolylineManager],
             inputs: [
-                'longitude', 'latitude', 'zoom', 'draggable: mapDraggable', 'disableDoubleClickZoom',
+                'longitude', 'latitude', 'zoom', 'draggable', 'disableDoubleClickZoom',
                 'disableDefaultUI', 'scrollwheel', 'backgroundColor', 'draggableCursor', 'draggingCursor',
                 'keyboardShortcuts', 'zoomControl', 'styles', 'usePanning', 'streetViewControl', 'fitBounds',
                 'scaleControl'
