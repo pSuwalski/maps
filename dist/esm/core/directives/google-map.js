@@ -144,12 +144,14 @@ export let SebmGoogleMap = SebmGoogleMap_1 = class SebmGoogleMap {
          * This event is fired when the zoom level has changed.
          */
         this.zoomChange = new EventEmitter();
+        this.loaded = new EventEmitter();
     }
     /** @internal */
     ngOnInit() {
         // todo: this should be solved with a new component and a viewChild decorator
         const container = this._elem.nativeElement.querySelector('.sebm-google-map-container-inner');
         this._initMapInstance(container);
+        this.loaded.emit(this._mapsWrapper.getNativeMap());
     }
     _initMapInstance(el) {
         this._mapsWrapper.createMap(el, {
@@ -294,7 +296,7 @@ SebmGoogleMap = SebmGoogleMap_1 = __decorate([
             'scaleControl'
         ],
         outputs: [
-            'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange'
+            'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange', 'loaded'
         ],
         host: { '[class.sebm-google-map-container]': 'true' },
         styles: [`

@@ -155,6 +155,7 @@ export declare class SebmGoogleMap implements OnChanges, OnInit {
      * This event is fired when the zoom level has changed.
      */
     zoomChange: EventEmitter<number>;
+    loaded: EventEmitter<any>;
     constructor(_elem: ElementRef, _mapsWrapper: GoogleMapsAPIWrapper);
     /** @internal */
     ngOnInit(): void;

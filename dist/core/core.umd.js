@@ -666,12 +666,14 @@ var __extends = (this && this.__extends) || function (d, b) {
              * This event is fired when the zoom level has changed.
              */
             this.zoomChange = new _angular_core.EventEmitter();
+            this.loaded = new _angular_core.EventEmitter();
         }
         /** @internal */
         SebmGoogleMap.prototype.ngOnInit = function () {
             // todo: this should be solved with a new component and a viewChild decorator
             var container = this._elem.nativeElement.querySelector('.sebm-google-map-container-inner');
             this._initMapInstance(container);
+            this.loaded.emit(this._mapsWrapper.getNativeMap());
         };
         SebmGoogleMap.prototype._initMapInstance = function (el) {
             this._mapsWrapper.createMap(el, {
@@ -823,7 +825,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 'scaleControl'
             ],
             outputs: [
-                'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange'
+                'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange', 'loaded'
             ],
             host: { '[class.sebm-google-map-container]': 'true' },
             styles: ["\n    .sebm-google-map-container-inner {\n      width: inherit;\n      height: inherit;\n    }\n    .sebm-google-map-content {\n      display:none;\n    }\n  "],

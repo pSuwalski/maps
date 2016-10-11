@@ -46,7 +46,7 @@ import {PolylineManager} from '../services/managers/polyline-manager';
     'scaleControl'
   ],
   outputs: [
-    'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange'
+    'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange', 'loaded'
   ],
   host: {'[class.sebm-google-map-container]': 'true'},
   styles: [`
@@ -213,6 +213,8 @@ export class SebmGoogleMap implements OnChanges, OnInit {
    */
   zoomChange: EventEmitter<number> = new EventEmitter<number>();
 
+  loaded: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(private _elem: ElementRef, private _mapsWrapper: GoogleMapsAPIWrapper) {}
 
   /** @internal */
@@ -220,6 +222,7 @@ export class SebmGoogleMap implements OnChanges, OnInit {
     // todo: this should be solved with a new component and a viewChild decorator
     const container = this._elem.nativeElement.querySelector('.sebm-google-map-container-inner');
     this._initMapInstance(container);
+    this.loaded.emit(this._mapsWrapper.getNativeMap());
   }
 
   private _initMapInstance(el: HTMLElement) {
