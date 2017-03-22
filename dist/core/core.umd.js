@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Observable')) :
         typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Observable'], factory) :
@@ -1647,7 +1652,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      */
     var WINDOW_GLOBAL = new _angular_core.OpaqueToken('angular2-google-maps window_global');
     var DOCUMENT_GLOBAL = new _angular_core.OpaqueToken('angular2-google-maps document_global');
-    var BROWSER_GLOBALS_PROVIDERS = [{ provide: WINDOW_GLOBAL, useValue: window }, { provide: DOCUMENT_GLOBAL, useValue: document }];
     /**
      * angular2-google-maps - Angular 2 components for Google Maps
      * @version v0.14.0
@@ -1698,10 +1702,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     exports.LazyMapsAPILoader = (function (_super) {
         __extends(LazyMapsAPILoader, _super);
         function LazyMapsAPILoader(config, w, d) {
-            _super.call(this);
-            this._config = config || DEFAULT_CONFIGURATION;
-            this._window = w;
-            this._document = d;
+            var _this = _super.call(this) || this;
+            _this._config = config || DEFAULT_CONFIGURATION;
+            _this._window = w;
+            _this._document = d;
+            return _this;
         }
         LazyMapsAPILoader.prototype.load = function () {
             var _this = this;
@@ -1832,51 +1837,6 @@ var __extends = (this && this.__extends) || function (d, b) {
      * @link https://github.com/SebastianM/angular2-google-maps#readme
      * @license MIT
      */
-    var __decorate$13 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-            r = Reflect.decorate(decorators, target, key, desc);
-        else
-            for (var i = decorators.length - 1; i >= 0; i--)
-                if (d = decorators[i])
-                    r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-    var __metadata$13 = (undefined && undefined.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-            return Reflect.metadata(k, v);
-    };
-    var CORE_DIRECTIVES = [
-        exports.SebmGoogleMap, exports.SebmGoogleMapMarker, exports.SebmGoogleMapInfoWindow, exports.SebmGoogleMapCircle,
-        exports.SebmGoogleMapPolyline, exports.SebmGoogleMapPolylinePoint
-    ];
-    /**
-     * The angular2-google-maps core module. Contains all Directives/Services/Pipes
-     * of the core module. Please use `AgmCoreModule.forRoot()` in your app module.
-     */
-    var AgmCoreModule_1;
-    exports.AgmCoreModule = AgmCoreModule_1 = (function () {
-        function AgmCoreModule() {
-        }
-        /**
-         * Please use this method when you register the module at the root level.
-         */
-        AgmCoreModule.forRoot = function (lazyMapsAPILoaderConfig) {
-            var providers = BROWSER_GLOBALS_PROVIDERS.concat([{ provide: exports.MapsAPILoader, useClass: exports.LazyMapsAPILoader }]);
-            if (lazyMapsAPILoaderConfig) {
-                providers.push(provideLazyMapsAPILoaderConfig(lazyMapsAPILoaderConfig));
-            }
-            return {
-                ngModule: AgmCoreModule_1,
-                providers: providers,
-            };
-        };
-        return AgmCoreModule;
-    }());
-    exports.AgmCoreModule = AgmCoreModule_1 = __decorate$13([
-        _angular_core.NgModule({ declarations: CORE_DIRECTIVES, exports: CORE_DIRECTIVES }),
-        __metadata$13('design:paramtypes', [])
-    ], exports.AgmCoreModule);
     exports.LazyMapsAPILoaderConfig = LazyMapsAPILoaderConfig;
     exports.provideLazyMapsAPILoaderConfig = provideLazyMapsAPILoaderConfig;
     exports.NoOpMapsAPILoader = NoOpMapsAPILoader;

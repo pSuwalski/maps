@@ -14,9 +14,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var Observable_1 = require('rxjs/Observable');
-var maps_api_loader_1 = require('./maps-api-loader/maps-api-loader');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var Observable_1 = require("rxjs/Observable");
+var maps_api_loader_1 = require("./maps-api-loader/maps-api-loader");
 /**
  * Wrapper class that handles the communication with the Google Maps Javascript
  * API v3
@@ -109,12 +110,12 @@ var GoogleMapsAPIWrapper = (function () {
     GoogleMapsAPIWrapper.prototype.triggerMapEvent = function (eventName) {
         return this._map.then(function (m) { return google.maps.event.trigger(m, eventName); });
     };
-    GoogleMapsAPIWrapper = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [maps_api_loader_1.MapsAPILoader, core_1.NgZone])
-    ], GoogleMapsAPIWrapper);
     return GoogleMapsAPIWrapper;
 }());
+GoogleMapsAPIWrapper = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [maps_api_loader_1.MapsAPILoader, core_1.NgZone])
+], GoogleMapsAPIWrapper);
 exports.GoogleMapsAPIWrapper = GoogleMapsAPIWrapper;
 
 //# sourceMappingURL=google-maps-api-wrapper.js.map

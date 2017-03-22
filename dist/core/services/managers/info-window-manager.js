@@ -14,9 +14,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var google_maps_api_wrapper_1 = require('../google-maps-api-wrapper');
-var marker_manager_1 = require('./marker-manager');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var google_maps_api_wrapper_1 = require("../google-maps-api-wrapper");
+var marker_manager_1 = require("./marker-manager");
 var InfoWindowManager = (function () {
     function InfoWindowManager(_mapsWrapper, _zone, _markerManager) {
         this._mapsWrapper = _mapsWrapper;
@@ -75,12 +76,13 @@ var InfoWindowManager = (function () {
         var infoWindowPromise = this._mapsWrapper.createInfoWindow(options);
         this._infoWindows.set(infoWindow, infoWindowPromise);
     };
-    InfoWindowManager = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, core_1.NgZone, marker_manager_1.MarkerManager])
-    ], InfoWindowManager);
     return InfoWindowManager;
 }());
+InfoWindowManager = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, core_1.NgZone,
+        marker_manager_1.MarkerManager])
+], InfoWindowManager);
 exports.InfoWindowManager = InfoWindowManager;
 
 //# sourceMappingURL=info-window-manager.js.map

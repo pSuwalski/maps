@@ -14,9 +14,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var circle_manager_1 = require('../services/managers/circle-manager');
-var SebmGoogleMapCircle = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var circle_manager_1 = require("../services/managers/circle-manager");
+var SebmGoogleMapCircle = SebmGoogleMapCircle_1 = (function () {
     function SebmGoogleMapCircle(_manager) {
         this._manager = _manager;
         /**
@@ -134,7 +135,7 @@ var SebmGoogleMapCircle = (function () {
     };
     SebmGoogleMapCircle.prototype._updateCircleOptionsChanges = function (changes) {
         var options = {};
-        var optionKeys = Object.keys(changes).filter(function (k) { return SebmGoogleMapCircle._mapOptions.indexOf(k) !== -1; });
+        var optionKeys = Object.keys(changes).filter(function (k) { return SebmGoogleMapCircle_1._mapOptions.indexOf(k) !== -1; });
         optionKeys.forEach(function (k) { options[k] = changes[k].currentValue; });
         if (optionKeys.length > 0) {
             this._manager.setOptions(this, options);
@@ -183,27 +184,28 @@ var SebmGoogleMapCircle = (function () {
      */
     SebmGoogleMapCircle.prototype.getBounds = function () { return this._manager.getBounds(this); };
     SebmGoogleMapCircle.prototype.getCenter = function () { return this._manager.getCenter(this); };
-    SebmGoogleMapCircle._mapOptions = [
-        'fillColor', 'fillOpacity', 'strokeColor', 'strokeOpacity', 'strokePosition', 'strokeWeight',
-        'visible', 'zIndex'
-    ];
-    SebmGoogleMapCircle = __decorate([
-        core_1.Directive({
-            selector: 'sebm-google-map-circle',
-            inputs: [
-                'latitude', 'longitude', 'clickable', 'draggable: circleDraggable', 'editable', 'fillColor',
-                'fillOpacity', 'radius', 'strokeColor', 'strokeOpacity', 'strokePosition', 'strokeWeight',
-                'visible', 'zIndex'
-            ],
-            outputs: [
-                'centerChange', 'circleClick', 'circleDblClick', 'drag', 'dragEnd', 'dragStart', 'mouseDown',
-                'mouseMove', 'mouseOut', 'mouseOver', 'mouseUp', 'radiusChange', 'rightClick'
-            ]
-        }), 
-        __metadata('design:paramtypes', [circle_manager_1.CircleManager])
-    ], SebmGoogleMapCircle);
     return SebmGoogleMapCircle;
 }());
+SebmGoogleMapCircle._mapOptions = [
+    'fillColor', 'fillOpacity', 'strokeColor', 'strokeOpacity', 'strokePosition', 'strokeWeight',
+    'visible', 'zIndex'
+];
+SebmGoogleMapCircle = SebmGoogleMapCircle_1 = __decorate([
+    core_1.Directive({
+        selector: 'sebm-google-map-circle',
+        inputs: [
+            'latitude', 'longitude', 'clickable', 'draggable: circleDraggable', 'editable', 'fillColor',
+            'fillOpacity', 'radius', 'strokeColor', 'strokeOpacity', 'strokePosition', 'strokeWeight',
+            'visible', 'zIndex'
+        ],
+        outputs: [
+            'centerChange', 'circleClick', 'circleDblClick', 'drag', 'dragEnd', 'dragStart', 'mouseDown',
+            'mouseMove', 'mouseOut', 'mouseOver', 'mouseUp', 'radiusChange', 'rightClick'
+        ]
+    }),
+    __metadata("design:paramtypes", [circle_manager_1.CircleManager])
+], SebmGoogleMapCircle);
 exports.SebmGoogleMapCircle = SebmGoogleMapCircle;
+var SebmGoogleMapCircle_1;
 
 //# sourceMappingURL=google-map-circle.js.map

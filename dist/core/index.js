@@ -8,11 +8,11 @@
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
+Object.defineProperty(exports, "__esModule", { value: true });
 // main modules
-__export(require('./directives'));
-__export(require('./services'));
-// Google Maps types
+__export(require("./directives"));
+__export(require("./services"));
 // core module
-__export(require('./core-module'));
+__export(require("./core-module"));
 
 //# sourceMappingURL=index.js.map

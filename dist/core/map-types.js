@@ -5,6 +5,6 @@
  * @license MIT
  */
 "use strict";
-// exported map types
+Object.defineProperty(exports, "__esModule", { value: true });
 
 //# sourceMappingURL=map-types.js.map

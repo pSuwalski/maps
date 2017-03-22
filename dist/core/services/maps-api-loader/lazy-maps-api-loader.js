@@ -5,11 +5,16 @@
  * @license MIT
  */
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,15 +27,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require('@angular/core');
-var browser_globals_1 = require('../../utils/browser-globals');
-var maps_api_loader_1 = require('./maps-api-loader');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var browser_globals_1 = require("../../utils/browser-globals");
+var maps_api_loader_1 = require("./maps-api-loader");
+var GoogleMapsScriptProtocol;
 (function (GoogleMapsScriptProtocol) {
     GoogleMapsScriptProtocol[GoogleMapsScriptProtocol["HTTP"] = 0] = "HTTP";
     GoogleMapsScriptProtocol[GoogleMapsScriptProtocol["HTTPS"] = 1] = "HTTPS";
     GoogleMapsScriptProtocol[GoogleMapsScriptProtocol["AUTO"] = 2] = "AUTO";
-})(exports.GoogleMapsScriptProtocol || (exports.GoogleMapsScriptProtocol = {}));
-var GoogleMapsScriptProtocol = exports.GoogleMapsScriptProtocol;
+})(GoogleMapsScriptProtocol = exports.GoogleMapsScriptProtocol || (exports.GoogleMapsScriptProtocol = {}));
 /**
  * Configuration for {@link LazyMapsAPILoader}.
  * See {@link LazyMapsAPILoaderConfig} for instance attribute descriptions.
@@ -54,10 +60,11 @@ var DEFAULT_CONFIGURATION = new LazyMapsAPILoaderConfig();
 var LazyMapsAPILoader = (function (_super) {
     __extends(LazyMapsAPILoader, _super);
     function LazyMapsAPILoader(config, w, d) {
-        _super.call(this);
-        this._config = config || DEFAULT_CONFIGURATION;
-        this._window = w;
-        this._document = d;
+        var _this = _super.call(this) || this;
+        _this._config = config || DEFAULT_CONFIGURATION;
+        _this._window = w;
+        _this._document = d;
+        return _this;
     }
     LazyMapsAPILoader.prototype.load = function () {
         var _this = this;
@@ -121,15 +128,15 @@ var LazyMapsAPILoader = (function (_super) {
             .join('&');
         return protocol + "//" + hostAndPath + "?" + params;
     };
-    LazyMapsAPILoader = __decorate([
-        core_1.Injectable(),
-        __param(0, core_1.Optional()),
-        __param(1, core_1.Inject(browser_globals_1.WINDOW_GLOBAL)),
-        __param(2, core_1.Inject(browser_globals_1.DOCUMENT_GLOBAL)), 
-        __metadata('design:paramtypes', [LazyMapsAPILoaderConfig, Window, Document])
-    ], LazyMapsAPILoader);
     return LazyMapsAPILoader;
 }(maps_api_loader_1.MapsAPILoader));
+LazyMapsAPILoader = __decorate([
+    core_1.Injectable(),
+    __param(0, core_1.Optional()), __param(1, core_1.Inject(browser_globals_1.WINDOW_GLOBAL)),
+    __param(2, core_1.Inject(browser_globals_1.DOCUMENT_GLOBAL)),
+    __metadata("design:paramtypes", [LazyMapsAPILoaderConfig, Window,
+        Document])
+], LazyMapsAPILoader);
 exports.LazyMapsAPILoader = LazyMapsAPILoader;
 /**
  * Creates a provider for a {@link LazyMapsAPILoaderConfig})

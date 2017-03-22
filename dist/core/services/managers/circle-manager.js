@@ -14,9 +14,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var Observable_1 = require('rxjs/Observable');
-var google_maps_api_wrapper_1 = require('../google-maps-api-wrapper');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var Observable_1 = require("rxjs/Observable");
+var google_maps_api_wrapper_1 = require("../google-maps-api-wrapper");
 var CircleManager = (function () {
     function CircleManager(_apiWrapper, _zone) {
         this._apiWrapper = _apiWrapper;
@@ -90,12 +91,12 @@ var CircleManager = (function () {
             };
         });
     };
-    CircleManager = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, core_1.NgZone])
-    ], CircleManager);
     return CircleManager;
 }());
+CircleManager = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, core_1.NgZone])
+], CircleManager);
 exports.CircleManager = CircleManager;
 
 //# sourceMappingURL=circle-manager.js.map

@@ -5,7 +5,8 @@
  * @license MIT
  */
 "use strict";
-var core_1 = require('@angular/core');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
 exports.WINDOW_GLOBAL = new core_1.OpaqueToken('angular2-google-maps window_global');
 exports.DOCUMENT_GLOBAL = new core_1.OpaqueToken('angular2-google-maps document_global');
 exports.BROWSER_GLOBALS_PROVIDERS = [{ provide: exports.WINDOW_GLOBAL, useValue: window }, { provide: exports.DOCUMENT_GLOBAL, useValue: document }];

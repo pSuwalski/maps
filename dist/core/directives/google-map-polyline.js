@@ -14,9 +14,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var polyline_manager_1 = require('../services/managers/polyline-manager');
-var google_map_polyline_point_1 = require('./google-map-polyline-point');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var polyline_manager_1 = require("../services/managers/polyline-manager");
+var google_map_polyline_point_1 = require("./google-map-polyline-point");
 var polylineId = 0;
 /**
  * SebmGoogleMapPolyline renders a polyline on a {@link SebmGoogleMap}
@@ -48,7 +49,7 @@ var polylineId = 0;
  * })
  * ```
  */
-var SebmGoogleMapPolyline = (function () {
+var SebmGoogleMapPolyline = SebmGoogleMapPolyline_1 = (function () {
     function SebmGoogleMapPolyline(_polylineManager) {
         this._polylineManager = _polylineManager;
         /**
@@ -146,7 +147,7 @@ var SebmGoogleMapPolyline = (function () {
             return;
         }
         var options = {};
-        var optionKeys = Object.keys(changes).filter(function (k) { return SebmGoogleMapPolyline._polylineOptionsAttributes.indexOf(k) !== -1; });
+        var optionKeys = Object.keys(changes).filter(function (k) { return SebmGoogleMapPolyline_1._polylineOptionsAttributes.indexOf(k) !== -1; });
         optionKeys.forEach(function (k) { return options[k] = changes[k].currentValue; });
         this._polylineManager.setPolylineOptions(this, options);
     };
@@ -190,30 +191,31 @@ var SebmGoogleMapPolyline = (function () {
         // unsubscribe all registered observable subscriptions
         this._subscriptions.forEach(function (s) { return s.unsubscribe(); });
     };
-    SebmGoogleMapPolyline._polylineOptionsAttributes = [
-        'draggable', 'editable', 'visible', 'geodesic', 'strokeColor', 'strokeOpacity', 'strokeWeight',
-        'zIndex'
-    ];
-    __decorate([
-        core_1.ContentChildren(google_map_polyline_point_1.SebmGoogleMapPolylinePoint), 
-        __metadata('design:type', core_1.QueryList)
-    ], SebmGoogleMapPolyline.prototype, "_points", void 0);
-    SebmGoogleMapPolyline = __decorate([
-        core_1.Directive({
-            selector: 'sebm-google-map-polyline',
-            inputs: [
-                'clickable', 'draggable: polylineDraggable', 'editable', 'geodesic', 'strokeColor',
-                'strokeWeight', 'strokeOpacity', 'visible', 'zIndex'
-            ],
-            outputs: [
-                'lineClick', 'lineDblClick', 'lineDrag', 'lineDragEnd', 'lineMouseDown', 'lineMouseMove',
-                'lineMouseOut', 'lineMouseOver', 'lineMouseUp', 'lineRightClick'
-            ]
-        }), 
-        __metadata('design:paramtypes', [polyline_manager_1.PolylineManager])
-    ], SebmGoogleMapPolyline);
     return SebmGoogleMapPolyline;
 }());
+SebmGoogleMapPolyline._polylineOptionsAttributes = [
+    'draggable', 'editable', 'visible', 'geodesic', 'strokeColor', 'strokeOpacity', 'strokeWeight',
+    'zIndex'
+];
+__decorate([
+    core_1.ContentChildren(google_map_polyline_point_1.SebmGoogleMapPolylinePoint),
+    __metadata("design:type", core_1.QueryList)
+], SebmGoogleMapPolyline.prototype, "_points", void 0);
+SebmGoogleMapPolyline = SebmGoogleMapPolyline_1 = __decorate([
+    core_1.Directive({
+        selector: 'sebm-google-map-polyline',
+        inputs: [
+            'clickable', 'draggable: polylineDraggable', 'editable', 'geodesic', 'strokeColor',
+            'strokeWeight', 'strokeOpacity', 'visible', 'zIndex'
+        ],
+        outputs: [
+            'lineClick', 'lineDblClick', 'lineDrag', 'lineDragEnd', 'lineMouseDown', 'lineMouseMove',
+            'lineMouseOut', 'lineMouseOver', 'lineMouseUp', 'lineRightClick'
+        ]
+    }),
+    __metadata("design:paramtypes", [polyline_manager_1.PolylineManager])
+], SebmGoogleMapPolyline);
 exports.SebmGoogleMapPolyline = SebmGoogleMapPolyline;
+var SebmGoogleMapPolyline_1;
 
 //# sourceMappingURL=google-map-polyline.js.map

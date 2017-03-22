@@ -14,8 +14,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var info_window_manager_1 = require('../services/managers/info-window-manager');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var info_window_manager_1 = require("../services/managers/info-window-manager");
 var infoWindowId = 0;
 /**
  * SebmGoogleMapInfoWindow renders a info window inside a {@link SebmGoogleMapMarker} or standalone.
@@ -46,7 +47,7 @@ var infoWindowId = 0;
  * })
  * ```
  */
-var SebmGoogleMapInfoWindow = (function () {
+var SebmGoogleMapInfoWindow = SebmGoogleMapInfoWindow_1 = (function () {
     function SebmGoogleMapInfoWindow(_infoWindowManager, _el) {
         this._infoWindowManager = _infoWindowManager;
         this._el = _el;
@@ -89,7 +90,7 @@ var SebmGoogleMapInfoWindow = (function () {
     };
     SebmGoogleMapInfoWindow.prototype._setInfoWindowOptions = function (changes) {
         var options = {};
-        var optionKeys = Object.keys(changes).filter(function (k) { return SebmGoogleMapInfoWindow._infoWindowOptionsInputs.indexOf(k) !== -1; });
+        var optionKeys = Object.keys(changes).filter(function (k) { return SebmGoogleMapInfoWindow_1._infoWindowOptionsInputs.indexOf(k) !== -1; });
         optionKeys.forEach(function (k) { options[k] = changes[k].currentValue; });
         this._infoWindowManager.setOptions(this, options);
     };
@@ -110,18 +111,19 @@ var SebmGoogleMapInfoWindow = (function () {
     SebmGoogleMapInfoWindow.prototype.toString = function () { return 'SebmGoogleMapInfoWindow-' + this._id.toString(); };
     /** @internal */
     SebmGoogleMapInfoWindow.prototype.ngOnDestroy = function () { this._infoWindowManager.deleteInfoWindow(this); };
-    SebmGoogleMapInfoWindow._infoWindowOptionsInputs = ['disableAutoPan', 'maxWidth'];
-    SebmGoogleMapInfoWindow = __decorate([
-        core_1.Component({
-            selector: 'sebm-google-map-info-window',
-            inputs: ['latitude', 'longitude', 'disableAutoPan', 'isOpen'],
-            outputs: ['infoWindowClose'],
-            template: "<div class='sebm-google-map-info-window-content'>\n      <ng-content></ng-content>\n    </div>\n  "
-        }), 
-        __metadata('design:paramtypes', [info_window_manager_1.InfoWindowManager, core_1.ElementRef])
-    ], SebmGoogleMapInfoWindow);
     return SebmGoogleMapInfoWindow;
 }());
+SebmGoogleMapInfoWindow._infoWindowOptionsInputs = ['disableAutoPan', 'maxWidth'];
+SebmGoogleMapInfoWindow = SebmGoogleMapInfoWindow_1 = __decorate([
+    core_1.Component({
+        selector: 'sebm-google-map-info-window',
+        inputs: ['latitude', 'longitude', 'disableAutoPan', 'isOpen'],
+        outputs: ['infoWindowClose'],
+        template: "<div class='sebm-google-map-info-window-content'>\n      <ng-content></ng-content>\n    </div>\n  "
+    }),
+    __metadata("design:paramtypes", [info_window_manager_1.InfoWindowManager, core_1.ElementRef])
+], SebmGoogleMapInfoWindow);
 exports.SebmGoogleMapInfoWindow = SebmGoogleMapInfoWindow;
+var SebmGoogleMapInfoWindow_1;
 
 //# sourceMappingURL=google-map-info-window.js.map

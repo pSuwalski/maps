@@ -14,9 +14,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var marker_manager_1 = require('../services/managers/marker-manager');
-var google_map_info_window_1 = require('./google-map-info-window');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var marker_manager_1 = require("../services/managers/marker-manager");
+var google_map_info_window_1 = require("./google-map-info-window");
 var markerId = 0;
 /**
  * SebmGoogleMapMarker renders a map marker inside a {@link SebmGoogleMap}.
@@ -173,23 +174,23 @@ var SebmGoogleMapMarker = (function () {
         // unsubscribe all registered observable subscriptions
         this._observableSubscriptions.forEach(function (s) { return s.unsubscribe(); });
     };
-    __decorate([
-        core_1.ContentChild(google_map_info_window_1.SebmGoogleMapInfoWindow), 
-        __metadata('design:type', google_map_info_window_1.SebmGoogleMapInfoWindow)
-    ], SebmGoogleMapMarker.prototype, "_infoWindow", void 0);
-    SebmGoogleMapMarker = __decorate([
-        core_1.Directive({
-            selector: 'sebm-google-map-marker',
-            inputs: [
-                'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'iconUrl',
-                'openInfoWindow', 'fitBounds', 'iconAnchorX', 'iconAnchorY', 'iconScaledSizeWidth', 'iconScaledSizeHeight', 'opacity', 'visible', 'zIndex'
-            ],
-            outputs: ['markerClick', 'dragEnd']
-        }), 
-        __metadata('design:paramtypes', [marker_manager_1.MarkerManager])
-    ], SebmGoogleMapMarker);
     return SebmGoogleMapMarker;
 }());
+__decorate([
+    core_1.ContentChild(google_map_info_window_1.SebmGoogleMapInfoWindow),
+    __metadata("design:type", google_map_info_window_1.SebmGoogleMapInfoWindow)
+], SebmGoogleMapMarker.prototype, "_infoWindow", void 0);
+SebmGoogleMapMarker = __decorate([
+    core_1.Directive({
+        selector: 'sebm-google-map-marker',
+        inputs: [
+            'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'iconUrl',
+            'openInfoWindow', 'fitBounds', 'iconAnchorX', 'iconAnchorY', 'iconScaledSizeWidth', 'iconScaledSizeHeight', 'opacity', 'visible', 'zIndex'
+        ],
+        outputs: ['markerClick', 'dragEnd']
+    }),
+    __metadata("design:paramtypes", [marker_manager_1.MarkerManager])
+], SebmGoogleMapMarker);
 exports.SebmGoogleMapMarker = SebmGoogleMapMarker;
 
 //# sourceMappingURL=google-map-marker.js.map

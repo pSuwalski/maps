@@ -5,6 +5,7 @@
  * @license MIT
  */
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * When using the NoOpMapsAPILoader, the Google Maps API must be added to the page via a `<script>`
  * Tag.

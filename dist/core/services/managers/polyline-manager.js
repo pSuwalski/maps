@@ -14,10 +14,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var Observable_1 = require('rxjs/Observable');
-var google_maps_api_wrapper_1 = require('../google-maps-api-wrapper');
-var PolylineManager = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var Observable_1 = require("rxjs/Observable");
+var google_maps_api_wrapper_1 = require("../google-maps-api-wrapper");
+var PolylineManager = PolylineManager_1 = (function () {
     function PolylineManager(_mapsWrapper, _zone) {
         this._mapsWrapper = _mapsWrapper;
         this._zone = _zone;
@@ -30,7 +31,7 @@ var PolylineManager = (function () {
         return path;
     };
     PolylineManager.prototype.addPolyline = function (line) {
-        var path = PolylineManager._convertPoints(line);
+        var path = PolylineManager_1._convertPoints(line);
         var polylinePromise = this._mapsWrapper.createPolyline({
             clickable: line.clickable,
             draggable: line.draggable,
@@ -47,7 +48,7 @@ var PolylineManager = (function () {
     };
     PolylineManager.prototype.updatePolylinePoints = function (line) {
         var _this = this;
-        var path = PolylineManager._convertPoints(line);
+        var path = PolylineManager_1._convertPoints(line);
         var m = this._polylines.get(line);
         if (m == null) {
             return Promise.resolve();
@@ -78,12 +79,13 @@ var PolylineManager = (function () {
             });
         });
     };
-    PolylineManager = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, core_1.NgZone])
-    ], PolylineManager);
     return PolylineManager;
 }());
+PolylineManager = PolylineManager_1 = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [google_maps_api_wrapper_1.GoogleMapsAPIWrapper, core_1.NgZone])
+], PolylineManager);
 exports.PolylineManager = PolylineManager;
+var PolylineManager_1;
 
 //# sourceMappingURL=polyline-manager.js.map
